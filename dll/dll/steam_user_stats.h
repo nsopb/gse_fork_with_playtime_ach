@@ -157,6 +157,7 @@ private:
     // requests from server
     void network_stats_initial(Common_Message *msg);
     void network_stats_updated(Common_Message *msg);
+    void network_achievement_request(Common_Message *msg);
     void network_callback_stats(Common_Message *msg);
 
     // requests from other users to share leaderboards
@@ -236,6 +237,10 @@ public:
     // - "name" and "desc" for retrieving the localized achievement name and description (returned in UTF8)
     // - "hidden" for retrieving if an achievement is hidden (returns "0" when not hidden, "1" when hidden)
     const char * GetAchievementDisplayAttribute( const char *pchName, const char *pchKey );
+
+    // Returns the global unlock percentage for an achievement from achievements.json,
+    // or -1.0 if the field is not present.
+    double GetAchievementUnlockPercentage( const char *pchName );
 
 
     // Achievement progress - triggers an AchievementProgress callback, that is all.
